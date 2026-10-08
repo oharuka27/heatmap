@@ -15,15 +15,18 @@ export const MARKETS: MarketDefinition[] = [
     currencies: ['jpy', 'usd'],
     defaultCurrency: 'jpy',
     sizeMetrics: ['marketCap', 'volume'],
-    limits: [50, 100, 150, 250],
-    defaultLimit: 100,
+    // 上位 50 件固定（API 負荷と視認性のバランス）
+    limits: [50],
+    defaultLimit: 50,
     shareLabel: 'Dominance',
     refreshIntervalMs: 60_000,
+    minReloadIntervalMs: 60_000,
   },
   {
     id: 'jp-stock',
     label: '日本株',
-    // TODO: provider 未実装（README の「今後の予定」参照）
+    // TODO: provider 未実装（README の「今後の予定」参照）。実装したら hidden を外す
+    hidden: true,
     periods: ['24h', '7d', '30d', '1y'],
     defaultPeriod: '24h',
     currencies: ['jpy'],
@@ -33,11 +36,13 @@ export const MARKETS: MarketDefinition[] = [
     defaultLimit: 100,
     shareLabel: '構成比',
     refreshIntervalMs: 60_000,
+    minReloadIntervalMs: 60_000,
   },
   {
     id: 'us-stock',
     label: '米国株',
-    // TODO: provider 未実装（README の「今後の予定」参照）
+    // TODO: provider 未実装（README の「今後の予定」参照）。実装したら hidden を外す
+    hidden: true,
     periods: ['24h', '7d', '30d', '1y'],
     defaultPeriod: '24h',
     currencies: ['usd'],
@@ -47,8 +52,12 @@ export const MARKETS: MarketDefinition[] = [
     defaultLimit: 100,
     shareLabel: '構成比',
     refreshIntervalMs: 60_000,
+    minReloadIntervalMs: 60_000,
   },
 ];
+
+/** タブとして表示するマーケット */
+export const VISIBLE_MARKETS = MARKETS.filter((m) => !m.hidden);
 
 export const DEFAULT_MARKET_ID: MarketId = 'crypto';
 

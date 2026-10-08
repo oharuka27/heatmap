@@ -14,7 +14,16 @@ export function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>マーケットヒートマップ</h1>
+        <h1 className="brand">
+          <span className="brand-mark" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+            <i />
+          </span>
+          <span className="brand-en">MARKET</span>
+          <span className="brand-ja">ヒートマップ</span>
+        </h1>
         <p className="subtitle">
           タイルの大きさは{settings.sizeMetric === 'marketCap' ? '時価総額' : '取引高'}、色は騰落率（赤: 下落 / 緑: 上昇）を表します。
         </p>

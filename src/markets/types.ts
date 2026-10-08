@@ -52,16 +52,20 @@ export interface MarketDefinition {
   label: string;
   /** provider が無いマーケットは「準備中」としてタブを無効化する */
   provider?: MarketProvider;
+  /** true のマーケットはタブ自体を表示しない（URL で指定されても選択させない） */
+  hidden?: boolean;
   periods: PeriodId[];
   defaultPeriod: PeriodId;
   currencies: CurrencyCode[];
   defaultCurrency: CurrencyCode;
   sizeMetrics: SizeMetric[];
-  /** 表示件数（上位 N 件で打ち切り）の選択肢 */
+  /** 表示件数（上位 N 件で打ち切り）の選択肢。1 つだけならプルダウンを出さず固定表示にする */
   limits: number[];
   defaultLimit: number;
   /** 全体に占める割合の呼び名（仮想通貨: Dominance、株: 構成比 など） */
   shareLabel: string;
   /** 自動更新間隔（ms） */
   refreshIntervalMs: number;
+  /** 手動再読み込みを許可するまでの最小間隔（ms）。API のレート制限対策 */
+  minReloadIntervalMs: number;
 }

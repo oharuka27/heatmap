@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { DEFAULT_MARKET_ID, MARKETS, getMarket } from '../markets/registry';
+import { DEFAULT_MARKET_ID, VISIBLE_MARKETS, getMarket } from '../markets/registry';
 import type { CurrencyCode, MarketDefinition, MarketId, PeriodId, SizeMetric } from '../markets/types';
 
 export interface ViewSettings {
@@ -22,7 +22,7 @@ function defaultsFor(market: MarketDefinition): ViewSettings {
 
 /** URL の値がそのマーケットで有効でなければデフォルトに戻す */
 function sanitize(raw: Partial<Record<keyof ViewSettings, string | null>>): ViewSettings {
-  const market = MARKETS.find((m) => m.id === raw.market) ?? getMarket(DEFAULT_MARKET_ID);
+  const market = VISIBLE_MARKETS.find((m) => m.id === raw.market) ?? getMarket(DEFAULT_MARKET_ID);
   const d = defaultsFor(market);
   const limit = Number(raw.limit);
   return {

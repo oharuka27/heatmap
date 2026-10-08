@@ -34,14 +34,70 @@ a {
   gap: 12px;
 }
 
-.header h1 {
+/* --- brand --- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin: 0;
-  font-size: 20px;
-  font-weight: 700;
+  line-height: 1;
+}
+
+/* 小さなツリーマップを模したロゴマーク */
+.brand-mark {
+  display: grid;
+  grid-template-columns: 14px 9px;
+  grid-template-rows: 9px 5px 9px;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.brand-mark i {
+  border-radius: 2px;
+}
+
+.brand-mark i:nth-child(1) {
+  grid-row: 1 / 3;
+  background: #e0242f;
+}
+
+.brand-mark i:nth-child(2) {
+  grid-row: 1 / 2;
+  background: #16c784;
+}
+
+.brand-mark i:nth-child(3) {
+  grid-row: 2 / 4;
+  background: #8a2c33;
+}
+
+.brand-mark i:nth-child(4) {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+  background: #1f6b4b;
+}
+
+.brand-en {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  background: linear-gradient(90deg, #ff5b66 0%, #f0b90b 50%, #16c784 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-ja {
+  padding-left: 12px;
+  border-left: 1px solid var(--border);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text);
 }
 
 .subtitle {
-  margin: 4px 0 0;
+  margin: 8px 0 0;
   font-size: 12px;
   color: var(--muted);
 }
@@ -125,12 +181,49 @@ a {
   font: inherit;
   font-size: 12px;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
   cursor: pointer;
 }
 
 .button:disabled {
   opacity: 0.5;
   cursor: default;
+}
+
+.rank-badge {
+  padding: 5px 10px;
+  border: 1px solid rgba(240, 185, 11, 0.35);
+  border-radius: 999px;
+  background: rgba(240, 185, 11, 0.08);
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.rank-badge strong {
+  margin-left: 2px;
+  color: var(--accent);
+}
+
+.reload {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.reload-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reload-note {
+  margin: 0;
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--muted);
+  text-align: right;
 }
 
 .updated-at {
@@ -288,6 +381,18 @@ a {
 @media (max-width: 640px) {
   .app {
     padding: 12px 8px 8px;
+  }
+  .brand-en {
+    font-size: 22px;
+  }
+  .brand-ja {
+    font-size: 15px;
+  }
+  .reload {
+    align-items: flex-start;
+  }
+  .reload-note {
+    text-align: left;
   }
   .heatmap-frame {
     padding: 4px;

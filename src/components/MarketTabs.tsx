@@ -1,4 +1,4 @@
-import { MARKETS, isMarketAvailable } from '../markets/registry';
+import { VISIBLE_MARKETS, isMarketAvailable } from '../markets/registry';
 import type { MarketId } from '../markets/types';
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 export function MarketTabs({ value, onChange }: Props) {
   return (
     <nav className="tabs" role="tablist" aria-label="マーケット">
-      {MARKETS.map((m) => {
+      {VISIBLE_MARKETS.map((m) => {
         const available = isMarketAvailable(m);
         return (
           <button
